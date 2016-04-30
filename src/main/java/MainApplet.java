@@ -20,8 +20,8 @@ public class MainApplet extends PApplet{
 	private final static int width = 1200, height = 650;
 	
 	public void setup() {
-
 		size(width, height);
+		Ani.init(this);
 		smooth();
 		loadData();
 		
