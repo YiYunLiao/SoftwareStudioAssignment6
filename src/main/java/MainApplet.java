@@ -9,7 +9,13 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class MainApplet extends PApplet{
 	private String path = "main/resources/";
-	private String file = "starwars-episode-1-interactions.json";
+	private String[] files = {"starwars-episode-1-interactions.json",
+							  "starwars-episode-2-interactions.json",
+							  "starwars-episode-3-interactions.json",
+							  "starwars-episode-4-interactions.json",
+							  "starwars-episode-5-interactions.json",
+							  "starwars-episode-6-interactions.json",
+							  "starwars-episode-7-interactions.json"};
 	
 	private final static int width = 1200, height = 650;
 	
