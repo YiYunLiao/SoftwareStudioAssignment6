@@ -3,6 +3,8 @@ package main.java;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.looksgood.ani.Ani;
+
 /**
 * This class is used to store states of the characters in the program.
 * You will need to declare other variables depending on your implementation.
@@ -27,18 +29,26 @@ public class Character {
 		targets = new HashMap<Character, Integer>();
 	}
 
+	
+	@SuppressWarnings("static-access")
 	public void display(){
 		parent.noStroke();
-
+		if(arrowIsInCircle()){
+			parent.fill(parent.unhex(colour), 300);
+			parent.ellipse(curX, curY, radius+5, radius+5);
+		}else{
+			parent.fill(parent.unhex(colour), 150);
+			parent.ellipse(curX, curY, radius, radius);
+		}
 	}
 	
 	
 	@SuppressWarnings("static-access")
 	public boolean arrowIsInCircle(){
-		float diffX = parent.mouseX - curX;
-		float diffY = parent.mouseY - curY;
+		float diffXSquare = parent.sq(parent.mouseX - curX);
+		float diffYSquare = parent.sq(parent.mouseY - curY);
 
-		if(parent.sqrt(parent.sq(diffX) + parent.sq(diffY)) < radius){
+		if(diffXSquare + diffYSquare < parent.sq(radius)){
 			return true;
 		}else{
 			return false;
@@ -68,5 +78,16 @@ public class Character {
 	
 	public float getY(){
 		return curY;
+	}
+	
+	
+	public void goTo(float x, float y) {
+		Ani.to(this, (float)0.5, "curX", x, Ani.QUINT_IN);
+		Ani.to(this, (float)0.5, "curY", y, Ani.QUINT_IN);
+	}
+	
+	
+	public void putBack(){
+		goTo(defaultX, defaultY);
 	}
 }
