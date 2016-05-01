@@ -36,6 +36,11 @@ public class MainApplet extends PApplet{
 		
 		episodes = new ArrayList<ArrayList<Character>>();
 		
+		addAll = new Button(this, "ADD ALL", 920, 100, 200, 50);
+		clear = new Button(this, "CLEAR", 920, 200, 200, 50);
+		
+		episodes = new ArrayList<ArrayList<Character>>();
+		
 		smooth();
 		loadData();
 	}
@@ -49,6 +54,13 @@ public class MainApplet extends PApplet{
 		fill(150, 45, 45);
 		textSize(40);
 		text(label, width/2, 50);
+		
+		addAll.display();
+		clear.display();
+		
+		for(Character ch: episodes.get(curEpisode-1)){
+			ch.display();
+		}
 	}
 	
 	
