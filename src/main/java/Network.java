@@ -29,16 +29,6 @@ public class Network {
 	}
 	
 	
-	public void addAll(){
-		
-	}
-	
-	
-	public void clearAll(){
-		
-	}
-	
-	
 	public boolean exist(Character ch){
 		if(characters.contains(ch)){
 			return true;
@@ -49,12 +39,26 @@ public class Network {
 	
 	
 	public void add(Character ch){
-		
+		characters.add(ch);
 	}
 	
 	
 	public void remove(Character ch){
+		characters.remove(ch);
+		ch.goBack();
+	}
+	
+	
+	public void addAll(){
 		
+	}
+	
+	
+	public void clearAll(){
+		for(Character ch: characters){
+			ch.goBack();
+		}
+		characters.clear();
 	}
 	
 	
