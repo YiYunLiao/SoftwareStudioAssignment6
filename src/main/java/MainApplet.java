@@ -84,10 +84,12 @@ public class MainApplet extends PApplet{
 			network.clearAll();
 		}
 		for(Character ch: episodes.get(curEpisode-1)){
-			if(ch.arrowIsInCharacter() && !network.exists(ch)){
-				this.network.add(ch);
-			}else if(ch.arrowIsInCharacter() && network.exists(ch)){
-				this.network.remove(ch);
+			if(ch.arrowIsInCharacter()){
+				if(!network.exists(ch)){
+					network.add(ch);
+				}else{
+					network.remove(ch);
+				}
 			}
 		}
 	}
