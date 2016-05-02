@@ -21,7 +21,7 @@
 ####Change Episode
 ![alt text](/picture/changeEpisode.gif "Change Episode")
 
-## **Members And Distributions** ##
+## **Team Members And Distributions** ##
 ####Member 1 : Allan: **103062203**
 *	Button.java
 *	CharacterLabel.java
@@ -34,3 +34,6 @@
 *	All methods to detect if arrow was on the object
 *	Every constructor except Button and CharacterLabel.java
 *	MainApplet.java: Everything except mouseClicked(): void
+
+######Reference
+1.	Date set: [GitHub](https://github.com/evelinag/StarWars-social-network)
