@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 /**
@@ -11,10 +13,15 @@ import processing.core.PApplet;
 public class Network {
 	
 	private PApplet parent;
+	private float centerX, centerY, radius;
+	private ArrayList<Character> characters;
 
-	public Network(PApplet parent){
+	public Network(PApplet parent, float x, float y, float radius){
 		this.parent = parent;
-		
+		centerX = x;
+		centerY = y;
+		this.radius = radius;
+		characters = new ArrayList<Character>();
 	}
 
 	public void display(){
@@ -33,7 +40,11 @@ public class Network {
 	
 	
 	public boolean exist(Character ch){
-		
+		if(characters.contains(ch)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	
@@ -47,8 +58,16 @@ public class Network {
 	}
 	
 	
+	@SuppressWarnings("static-access")
 	public boolean arrowIsOnCircle(){
+		float diffXSquare = parent.sq(parent.mouseX - centerX);
+		float diffYSquare = parent.sq(parent.mouseY - centerY);
 		
+		if(diffXSquare + diffYSquare <= parent.sq(radius)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 }
