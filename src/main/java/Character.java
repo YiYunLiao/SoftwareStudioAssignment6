@@ -99,7 +99,7 @@ public class Character {
 	}
 	
 	
-	public void putBack(){
+	public void goBack(){
 		goTo(defaultX, defaultY);
 	}
 }
