@@ -5,7 +5,7 @@ public class Button {
 	private String name;
 	private float x, y, width, height;
 	
-	
+	// constructor of Button
 	public Button(MainApplet parent, String name, float x, float y, float width, float height){
 		this.parent = parent;
 		this.name = name;
@@ -15,7 +15,7 @@ public class Button {
 		this.height = height;
 	}
 	
-	
+	// display button
 	public void display(){
 		if(arrowIsInButton() && !parent.mousePressed){
 			parent.stroke(110, 110, 110);
@@ -36,6 +36,7 @@ public class Button {
 	}
 	
 	
+	// detect whether arrow was in button
 	public boolean arrowIsInButton(){		
 		if(parent.mouseX > x && parent.mouseX < x + width &&
 			parent.mouseY > y && parent.mouseY < y + height){
