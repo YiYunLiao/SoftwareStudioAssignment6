@@ -1,8 +1,8 @@
-## SoftwareStudioAssignment6 ##
+# SoftwareStudioAssignment6 #
 
 ##Explanation Of Design
 ####Add Character
-![alt text][/picture/add.gif "Add Character"]
+![alt text](/picture/add.gif "Add Character")
 
 # Members And Distributions #
 ##Member 1 : Allan: 103062203
