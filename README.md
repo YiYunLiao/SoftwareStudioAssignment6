@@ -1,5 +1,5 @@
-# _Software Studio Assignment6 Team3_ #
-## Explanations Of Design ##
+# _Software Studio Assignment6 **Team3**_ #
+## **Explanations Of Design** ##
 ####Operation
 *	Click a character: The character will be added to network or put back to original place
 *	Click on button "ADD ALL": All of the characters will be added to network
@@ -17,7 +17,7 @@
 ####Change Episode
 ![alt text](/picture/changeEpisode.gif "Change Episode")
 
-## Members And Distributions ##
+## **Members And Distributions** ##
 ####Member 1 : Allan: 103062203
 *	Button.java
 *	CharacterLabel.java
