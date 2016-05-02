@@ -79,9 +79,16 @@ public class MainApplet extends PApplet{
 	
 	public void mouseClicked(){
 		if(addAll.arrowIsInButton()){
-			
+			network.addAll(episodes.get(curEpisode-1));
 		}else if(clear.arrowIsInButton()){
-			
+			network.clearAll();
+		}
+		for(Character ch: episodes.get(curEpisode-1)){
+			if(ch.arrowIsInCharacter() && !network.exists(ch)){
+				this.network.add(ch);
+			}else if(ch.arrowIsInCharacter() && network.exists(ch)){
+				this.network.remove(ch);
+			}
 		}
 	}
 	
@@ -118,6 +125,7 @@ public class MainApplet extends PApplet{
 	public void keyReleased(){
 		if(nextEpisode >= 1 && nextEpisode <= 7){
 			setEpisode(nextEpisode);
+			network.clearAll();
 		}
 		nextEpisode = 0;
 	}
