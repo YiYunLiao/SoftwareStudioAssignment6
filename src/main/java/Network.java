@@ -1,6 +1,8 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import processing.core.PApplet;
 
@@ -25,16 +27,26 @@ public class Network {
 	}
 
 	public void display(){
+		parent.noFill();
+		if(arrowIsOnCircle()){
+			if(parent.mousePressed){
+				parent.strokeWeight(9);
+				parent.stroke(120, 40, 180);
+			}else{
+				parent.strokeWeight(6);
+				parent.stroke(180, 110, 220);
+			}
+		}else{
+			parent.strokeWeight(3);
+			parent.stroke(200, 150, 220);
+		}
+		parent.ellipse(centerX, centerY, radius, radius);
 		
+		displayCharacters();
 	}
 	
 	
-	public void addAll(){
-		
-	}
-	
-	
-	public void clearAll(){
+	private void displayCharacters(){
 		
 	}
 	
@@ -49,17 +61,31 @@ public class Network {
 	
 	
 	public void add(Character ch){
-		
+		characters.add(ch);
 	}
 	
 	
 	public void remove(Character ch){
+		characters.remove(ch);
+		ch.goBack();
+	}
+	
+	
+	public void addAll(){
 		
 	}
 	
 	
+	public void clearAll(){
+		for(Character ch: characters){
+			ch.goBack();
+		}
+		characters.clear();
+	}
+	
+	
 	@SuppressWarnings("static-access")
-	public boolean arrowIsOnCircle(){
+	private boolean arrowIsOnCircle(){
 		float diffXSquare = parent.sq(parent.mouseX - centerX);
 		float diffYSquare = parent.sq(parent.mouseY - centerY);
 		
