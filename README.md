@@ -3,6 +3,14 @@
 ##Explanation Of Design
 ####Add Character
 ![alt text](/picture/add.gif "Add Character")
+####Remove Character
+![alt text](/picture/remove.gif "Remove Character")
+####Add All Characters
+![alt text](/picture/addAll.gif "Add All Characters")
+####Clear All Characters
+![alt text](/picture/clear.gif "Clear All Characters")
+####Change Episode
+![alt text](/picture/changeEpisode.gif "Change Episode")
 
 # Members And Distributions #
 ##Member 1 : Allan: 103062203
