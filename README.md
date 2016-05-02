@@ -1,4 +1,4 @@
-# SoftwareStudioAssignment6_Team3 #
+# _Software Studio Assignment6 Team3_ #
 ## Explanations Of Design ##
 ####Operation
 *	Click a character: The character will be added to network or put back to original place
