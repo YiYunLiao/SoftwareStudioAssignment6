@@ -1,5 +1,5 @@
 # SoftwareStudioAssignment6_Team3 #
-##Explanations Of Design
+## Explanations Of Design ##
 ####Operation
 *	Click a character: The character will be added to network or put back to original place
 *	Click on button "ADD ALL": All of the characters will be added to network
@@ -17,7 +17,7 @@
 ####Change Episode
 ![alt text](/picture/changeEpisode.gif "Change Episode")
 
-# Members And Distributions #
+## Members And Distributions ##
 ##Member 1 : Allan: 103062203
 		Date: 2016/5/2 12:26:21
 		update button and implement constructor of Button
