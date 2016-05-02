@@ -36,4 +36,4 @@
 *	MainApplet.java: Everything except mouseClicked(): void
 
 ######Reference
-1.	Date set: [GitHub](https://github.com/evelinag/StarWars-social-network)
+1.	Date set: [StarWars-social-network](https://github.com/evelinag/StarWars-social-network)
