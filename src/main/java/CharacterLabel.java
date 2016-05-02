@@ -6,6 +6,7 @@ public class CharacterLabel {
 	private String name;
 	private float labelWidth, labelHeight;
 	
+	// constructor of CharactorLabel
 	public CharacterLabel(MainApplet parent, String name){
 		this.parent = parent;
 		this.name = name;
@@ -13,7 +14,7 @@ public class CharacterLabel {
 		labelHeight = 25;
 	}
 	
-	
+	//display label
 	public void display(){
 		parent.fill(20, 80, 220);
 		parent.rect(parent.mouseX, parent.mouseY, labelWidth, labelHeight, 7);
