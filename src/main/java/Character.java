@@ -14,6 +14,7 @@ public class Character {
 	private MainApplet parent;
 	private String name, colour;
 	private float defaultX, defaultY, curX, curY, radius;
+	private CharacterLabel label;
 	private Map<Character, Integer> targets;
 
 
@@ -26,6 +27,7 @@ public class Character {
 		curX = x;
 		curY = y;
 		this.radius = radius;
+		label = new CharacterLabel(parent, name);
 		targets = new HashMap<Character, Integer>();
 	}
 
@@ -34,10 +36,15 @@ public class Character {
 	public void display(){
 		parent.noStroke();
 		if(arrowIsInCircle()){
-			parent.fill(parent.unhex(colour), 300);
-			parent.ellipse(curX, curY, radius+5, radius+5);
+			if(parent.mousePressed){
+				parent.fill(parent.unhex(colour), 255);
+				parent.ellipse(curX, curY, radius+5, radius+5);
+			}else{
+				parent.fill(parent.unhex(colour), 180);
+				parent.ellipse(curX, curY, radius+5, radius+5);
+			}
 		}else{
-			parent.fill(parent.unhex(colour), 150);
+			parent.fill(parent.unhex(colour), 125);
 			parent.ellipse(curX, curY, radius, radius);
 		}
 	}
@@ -63,6 +70,11 @@ public class Character {
 	
 	public Map<Character, Integer> getTargets(){
 		return targets;
+	}
+	
+	
+	CharacterLabel getLabel(){
+		return label;
 	}
 	
 	
