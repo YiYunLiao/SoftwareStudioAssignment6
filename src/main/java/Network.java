@@ -16,7 +16,8 @@ public class Network {
 	private PApplet parent;
 	private float centerX, centerY, radius;
 	private ArrayList<Character> characters;
-
+	
+	//constructor of Network
 	public Network(PApplet parent, float x, float y, float radius){
 		this.parent = parent;
 		centerX = x;
@@ -24,7 +25,8 @@ public class Network {
 		this.radius = radius;
 		characters = new ArrayList<Character>();
 	}
-
+	
+	//display the circle and characters on circle
 	public void display(){
 		parent.noFill();
 		if(arrowIsOnCircle()){
@@ -44,7 +46,7 @@ public class Network {
 		displayCharacters();
 	}
 	
-	
+	//display characters
 	private void displayCharacters(){
 		parent.stroke(200, 40, 180);
 		for(Character ch: characters){
@@ -61,7 +63,7 @@ public class Network {
 		}
 	}
 	
-	
+	//update the characters on circle when clicking any characters
 	@SuppressWarnings("static-access")
 	private void update(){
 		int num = characters.size();
@@ -72,7 +74,7 @@ public class Network {
 		}
 	}
 	
-	
+	//check if character was on the circle
 	public boolean exists(Character ch){
 		if(characters.contains(ch)){
 			return true;
@@ -81,20 +83,20 @@ public class Network {
 		}
 	}
 	
-	
+	//add character to circle and update circle
 	public void add(Character ch){
 		characters.add(ch);
 		update();
 	}
 	
-	
+	//remove character in the circle and update circle
 	public void remove(Character ch){
 		characters.remove(ch);
 		ch.goBack();
 		update();
 	}
 	
-	
+	//add all characters to circle
 	public void addAll(ArrayList<Character> chs){
 		for(Character ch: chs){
 			if(!characters.contains(ch)){
@@ -103,7 +105,7 @@ public class Network {
 		}
 	}
 	
-	
+	//remove all characters in circle
 	public void clearAll(){
 		for(Character ch: characters){
 			ch.goBack();
@@ -112,7 +114,7 @@ public class Network {
 		update();
 	}
 	
-	
+	//detect if arrow was in circle
 	@SuppressWarnings("static-access")
 	private boolean arrowIsOnCircle(){
 		float diffXSquare = parent.sq(parent.mouseX - centerX);
