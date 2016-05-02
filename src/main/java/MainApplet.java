@@ -23,11 +23,11 @@ public class MainApplet extends PApplet{
 							  "starwars-episode-7-interactions.json"};
 	
 	private final static int width = 1200, height = 650;
-	private int curEpisode;
+	private int curEpisode, nextEpisode;
 	private String topLabel;
 	private Button addAll, clear;
 	private ArrayList<ArrayList<Character>> episodes;
-	
+	private CharacterLabel chLabel;
 	
 	
 	public void setup(){
@@ -40,6 +40,7 @@ public class MainApplet extends PApplet{
 		clear = new Button(this, "CLEAR", 920, 200, 200, 50);
 		
 		episodes = new ArrayList<ArrayList<Character>>();
+		chLabel = null;
 		
 		smooth();
 		loadData();
@@ -58,8 +59,15 @@ public class MainApplet extends PApplet{
 		addAll.display();
 		clear.display();
 		
+		chLabel = null;
 		for(Character ch: episodes.get(curEpisode-1)){
 			ch.display();
+			if(ch.arrowIsInCircle()){
+				chLabel = ch.getLabel();
+			}
+		}
+		if(chLabel != null){
+			chLabel.display();
 		}
 	}
 	
@@ -74,26 +82,45 @@ public class MainApplet extends PApplet{
 	
 	
 	public void keyPressed(){
-		if(key == '1'){
-			setEpisode(1);
-		}else if(key == '2'){
-			setEpisode(2);
-		}else if(key == '3'){
-			setEpisode(3);
-		}else if(key == '4'){
-			setEpisode(4);
-		}else if(key == '5'){
-			setEpisode(5);
-		}else if(key == '6'){
-			setEpisode(6);
-		}else if(key == '7'){
-			setEpisode(7);
-		}		
+		switch(key){
+			case '1':
+				nextEpisode = 1;
+				break;
+			case '2':
+				nextEpisode = 2;
+				break;
+			case '3':
+				nextEpisode = 3;
+				break;
+			case '4':
+				nextEpisode = 4;
+				break;
+			case '5':
+				nextEpisode = 5;
+				break;
+			case '6':
+				nextEpisode = 6;
+				break;
+			case '7':
+				nextEpisode = 7;
+				break;
+			default:
+				nextEpisode = 0;
+		}
+	}
+	
+	
+	public void keyReleased(){
+		if(nextEpisode >= 1 && nextEpisode <= 7){
+			setEpisode(nextEpisode);
+		}
+		nextEpisode = 0;
 	}
 	
 	
 	private void setEpisode(int episode){
-		
+		curEpisode = episode;
+		topLabel = "Star Wars " + String.valueOf(curEpisode);
 	}
 
 	
