@@ -1,7 +1,6 @@
 package main.java;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import processing.core.PApplet;
@@ -47,11 +46,34 @@ public class Network {
 	
 	
 	private void displayCharacters(){
-		
+		parent.stroke(200, 40, 180);
+		for(Character ch: characters){
+			Map<Character, Integer> targets = ch.getTargets();
+			for(Character target: targets.keySet()){
+				if(characters.contains(target)){
+					parent.strokeWeight((float)targets.get(target)/4);
+					parent.beginShape();
+					parent.vertex(ch.getX(), ch.getY());
+					parent.quadraticVertex(centerX, centerY, target.getX(), target.getY());
+					parent.endShape();
+				}
+			}
+		}
 	}
 	
 	
-	public boolean exist(Character ch){
+	@SuppressWarnings("static-access")
+	private void update(){
+		int num = characters.size();
+		for(int i=0; i<num; i++){
+			float nextX = centerX + radius*parent.cos(parent.TWO_PI/num*i);
+			float nextY = centerY + radius*parent.sin(parent.TWO_PI/num*i);
+			characters.get(i).goTo(nextX, nextY);
+		}
+	}
+	
+	
+	public boolean exists(Character ch){
 		if(characters.contains(ch)){
 			return true;
 		}else{
@@ -62,17 +84,23 @@ public class Network {
 	
 	public void add(Character ch){
 		characters.add(ch);
+		update();
 	}
 	
 	
 	public void remove(Character ch){
 		characters.remove(ch);
 		ch.goBack();
+		update();
 	}
 	
 	
-	public void addAll(){
-		
+	public void addAll(ArrayList<Character> chs){
+		for(Character ch: chs){
+			if(!characters.contains(ch)){
+				add(ch);
+			}
+		}
 	}
 	
 	
@@ -81,6 +109,7 @@ public class Network {
 			ch.goBack();
 		}
 		characters.clear();
+		update();
 	}
 	
 	
