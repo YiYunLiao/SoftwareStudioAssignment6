@@ -3,9 +3,9 @@
 ####Operation
 	> *	Click a character: The character will be added to network or
 									put back to original place
-	> *	Click on button "ADD ALL": All of the characters will be added to network
-	> *	Click on button "CLEAR": All of the characters on network will be put back to original places
-	> *	Press 1~7 on keyboard and release it: Change the episode displayed
+		Click on button "ADD ALL": All of the characters will be added to network
+		Click on button "CLEAR": All of the characters on network will be put back to original places
+		Press 1~7 on keyboard and release it: Change the episode displayed
 ####Add Character
 ![alt text](/picture/add.gif "Add Character")
 ####Remove Character
