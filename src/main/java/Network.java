@@ -13,12 +13,41 @@ public class Network {
 	private PApplet parent;
 
 	public Network(PApplet parent){
-
 		this.parent = parent;
 		
 	}
 
 	public void display(){
+		
+	}
+	
+	
+	public void addAll(){
+		
+	}
+	
+	
+	public void clearAll(){
+		
+	}
+	
+	
+	public boolean exist(Character ch){
+		
+	}
+	
+	
+	public void add(Character ch){
+		
+	}
+	
+	
+	public void remove(Character ch){
+		
+	}
+	
+	
+	public boolean arrowIsOnCircle(){
 		
 	}
 	
