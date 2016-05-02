@@ -18,7 +18,7 @@
 ![alt text](/picture/changeEpisode.gif "Change Episode")
 
 ## Members And Distributions ##
-##Member 1 : Allan: 103062203
+####Member 1 : Allan: 103062203
 		Date: 2016/5/2 12:26:21
 		update button and implement constructor of Button
 		and method to detect is arrow is on the area of buttons
@@ -34,7 +34,7 @@
 
 		Date: 2016/5/2 20:44:11
 		add action when clicked on characters in MainApplet
-##Member 2 : YiYunLiao: 103062235
+####Member 2 : YiYunLiao: 103062235
 		Date: 2016/5/1  12:21:05
 		update Character
 		
