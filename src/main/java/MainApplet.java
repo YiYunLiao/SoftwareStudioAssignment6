@@ -30,7 +30,7 @@ public class MainApplet extends PApplet{
 	private CharacterLabel chLabel;
 	private Network network;
 	
-	
+	//initial MainApplet
 	public void setup(){
 		size(width, height);
 		Ani.init(this);
@@ -49,7 +49,7 @@ public class MainApplet extends PApplet{
 		loadData();
 	}
 
-	
+	//draw the applet
 	public void draw(){
 		background(255);
 		ellipseMode(RADIUS);
@@ -76,7 +76,7 @@ public class MainApplet extends PApplet{
 		}
 	}
 	
-	
+	//implement mouseClicked
 	public void mouseClicked(){
 		if(addAll.arrowIsInButton()){
 			network.addAll(episodes.get(curEpisode-1));
@@ -92,7 +92,7 @@ public class MainApplet extends PApplet{
 		}
 	}
 	
-	
+	//implement keyPressed
 	public void keyPressed(){
 		switch(key){
 			case '1':
@@ -121,7 +121,7 @@ public class MainApplet extends PApplet{
 		}
 	}
 	
-	
+	//implement keyReleased
 	public void keyReleased(){
 		if(nextEpisode >= 1 && nextEpisode <= 7){
 			setEpisode(nextEpisode);
@@ -130,13 +130,13 @@ public class MainApplet extends PApplet{
 		nextEpisode = 0;
 	}
 	
-	
+	//set the episode and update label of applet
 	private void setEpisode(int episode){
 		curEpisode = episode;
 		topLabel = "Star Wars " + String.valueOf(curEpisode);
 	}
 
-	
+	//load all data
 	private void loadData(){
 		JSONObject data;
 		JSONArray nodes, links;
