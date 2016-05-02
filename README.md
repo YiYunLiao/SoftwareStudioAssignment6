@@ -1,4 +1,6 @@
 # _Software Studio Assignment6 **Team3**_ #
+## **Requirement** ##
+Write a	program to make users	perceive the interaction between characters in the movie Star Wars for each episodes (in visualization or audiation). In this program,	users expect to understand the network structure, such as the interaction of the two specified characters, in a format other than just texts. The data set was	organized by Evelina Gabasova[1], in JSON format on Github and will be explained	 in the next section.
 ## **Explanation of the Design** ##
 ####Operation
 *	Click a character: The character will be added to network or put back to original place.
@@ -36,4 +38,4 @@
 *	MainApplet.java: Everything except mouseClicked(): void
 
 ######Reference
-1.	Date set: [StarWars-social-network](https://github.com/evelinag/StarWars-social-network)
+[1]	Date set: [StarWars-social-network](https://github.com/evelinag/StarWars-social-network)
