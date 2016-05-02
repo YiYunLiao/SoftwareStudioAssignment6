@@ -1,12 +1,11 @@
-##SoftwareStudioAssignment6
+## SoftwareStudioAssignment6 ##
 
 ##Explanation Of Design
 ####Add Character
 ![alt text][/picture/add.gif "Add Character"]
 
-##Members And Distributions
-#Member 1 : Allan: 103062203#
-
+# Members And Distributions #
+##Member 1 : Allan: 103062203
 		Date: 2016/5/2 12:26:21
 		update button and implement constructor of Button
 		and method to detect is arrow is on the area of buttons
@@ -22,8 +21,7 @@
 
 		Date: 2016/5/2 20:44:11
 		add action when clicked on characters in MainApplet
-#Member 2 : YiYunLiao: 103062235#
-		
+##Member 2 : YiYunLiao: 103062235
 		Date: 2016/5/1  12:21:05
 		update Character
 		
