@@ -28,6 +28,7 @@ public class MainApplet extends PApplet{
 	private Button addAll, clear;
 	private ArrayList<ArrayList<Character>> episodes;
 	private CharacterLabel chLabel;
+	private Network network;
 	
 	
 	public void setup(){
@@ -41,6 +42,8 @@ public class MainApplet extends PApplet{
 		
 		episodes = new ArrayList<ArrayList<Character>>();
 		chLabel = null;
+		
+		network = new Network(this, width/2, height/2, height/2-100);
 		
 		smooth();
 		loadData();
@@ -59,10 +62,12 @@ public class MainApplet extends PApplet{
 		addAll.display();
 		clear.display();
 		
+		network.display();
+		
 		chLabel = null;
 		for(Character ch: episodes.get(curEpisode-1)){
 			ch.display();
-			if(ch.arrowIsInCircle()){
+			if(ch.arrowIsInCharacter()){
 				chLabel = ch.getLabel();
 			}
 		}

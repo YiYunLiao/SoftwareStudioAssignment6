@@ -35,7 +35,7 @@ public class Character {
 	@SuppressWarnings("static-access")
 	public void display(){
 		parent.noStroke();
-		if(arrowIsInCircle()){
+		if(arrowIsInCharacter()){
 			if(parent.mousePressed){
 				parent.fill(parent.unhex(colour), 255);
 				parent.ellipse(curX, curY, radius+5, radius+5);
@@ -51,7 +51,7 @@ public class Character {
 	
 	
 	@SuppressWarnings("static-access")
-	public boolean arrowIsInCircle(){
+	public boolean arrowIsInCharacter(){
 		float diffXSquare = parent.sq(parent.mouseX - curX);
 		float diffYSquare = parent.sq(parent.mouseY - curY);
 
@@ -93,7 +93,7 @@ public class Character {
 	}
 	
 	
-	public void goTo(float x, float y) {
+	public void goTo(float x, float y){
 		Ani.to(this, (float)0.5, "curX", x, Ani.QUINT_IN);
 		Ani.to(this, (float)0.5, "curY", y, Ani.QUINT_IN);
 	}
