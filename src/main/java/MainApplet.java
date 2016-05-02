@@ -24,7 +24,7 @@ public class MainApplet extends PApplet{
 	
 	private final static int width = 1200, height = 650;
 	private int curEpisode;
-	private String label;
+	private String topLabel;
 	private Button addAll, clear;
 	private ArrayList<ArrayList<Character>> episodes;
 	
@@ -34,7 +34,7 @@ public class MainApplet extends PApplet{
 		size(width, height);
 		Ani.init(this);
 		
-		episodes = new ArrayList<ArrayList<Character>>();
+		setEpisode(1);
 		
 		addAll = new Button(this, "ADD ALL", 920, 100, 200, 50);
 		clear = new Button(this, "CLEAR", 920, 200, 200, 50);
@@ -53,7 +53,7 @@ public class MainApplet extends PApplet{
 		textAlign(CENTER, CENTER);
 		fill(150, 45, 45);
 		textSize(40);
-		text(label, width/2, 50);
+		text(topLabel, width/2, 50);
 		
 		addAll.display();
 		clear.display();
@@ -65,26 +65,35 @@ public class MainApplet extends PApplet{
 	
 	
 	public void mouseClicked(){
-		
+		if(addAll.arrowIsInButton()){
+			
+		}else if(clear.arrowIsInButton()){
+			
+		}
 	}
 	
 	
 	public void keyPressed(){
 		if(key == '1'){
-			
+			setEpisode(1);
 		}else if(key == '2'){
-			
+			setEpisode(2);
 		}else if(key == '3'){
-			
+			setEpisode(3);
 		}else if(key == '4'){
-			
+			setEpisode(4);
 		}else if(key == '5'){
-			
+			setEpisode(5);
 		}else if(key == '6'){
-			
+			setEpisode(6);
 		}else if(key == '7'){
-			
-		}	
+			setEpisode(7);
+		}		
+	}
+	
+	
+	private void setEpisode(int episode){
+		
 	}
 
 	
