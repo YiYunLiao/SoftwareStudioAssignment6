@@ -30,12 +30,15 @@ Write a	program to make users	perceive the interaction between characters in the
 *	Character.java:	display(): void
 *	Network.java: Everything except constructor, display(): void and method to detect mouse
 *	MainApplet.java: mouseClicked(): void
+*	Find materials of music.
 
 ####Member 2 : YiYunLiao: **103062235**
 *	Character.java: Everything except display(): void
-*	All methods to detect if arrow was on the object
+*	All methods to detect if arrow was on the object.
 *	Every constructor except Button and CharacterLabel.java
 *	MainApplet.java: Everything except mouseClicked(): void
+*	MinimPlayer.java
+*	MusicClip.java
 
 ######Reference
 [1]	Date set: [StarWars-social-network](https://github.com/evelinag/StarWars-social-network)
