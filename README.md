@@ -7,6 +7,7 @@ Write a	program to make users	perceive the interaction between characters in the
 *	Click on button "ADD ALL": All of the characters will be added to network.
 *	Click on button "CLEAR": All of the characters on network will be put back to original places.
 *	Press 1~7 on keyboard and release it: Change the episode displayed.
+*	_Unzip SoftwareStudioAssignment6/src/main/music.zip and move all of the music files to: SoftwareStudioAssignment6/bin/main/java_
 
 ####Visualization
 *	The width of each link is visualized based on the value of the link.
