@@ -31,13 +31,12 @@ public class MainApplet extends PApplet{
 	private Network network;
 	
 	private MinimPlayer bgm;
+	private MusicClip changeEpisode;
 	
 	//initial MainApplet
 	public void setup(){
 		size(width, height);
 		Ani.init(this);
-		
-		setEpisode(1);
 		
 		addAll = new Button(this, "ADD ALL", 920, 100, 200, 50);
 		clear = new Button(this, "CLEAR", 920, 200, 200, 50);
@@ -47,11 +46,15 @@ public class MainApplet extends PApplet{
 		
 		network = new Network(this, width/2, height/2, height/2-100);
 		
+		curEpisode = 1;
+		topLabel = "Star Wars " + String.valueOf(curEpisode);
+		
 		smooth();
 		loadData();
 
 		bgm = new MinimPlayer(this, "bgMusic.mp3");
 		bgm.loop();
+		changeEpisode = new MusicClip("changeEpisode.mp3");
 	}
 
 	//draw the applet
@@ -59,10 +62,7 @@ public class MainApplet extends PApplet{
 		background(255);
 		ellipseMode(RADIUS);
 		
-		textAlign(CENTER, CENTER);
-		fill(150, 45, 45);
-		textSize(40);
-		text(topLabel, width/2, 50);
+		drawTopLabel();
 		
 		addAll.display();
 		clear.display();
@@ -78,6 +78,48 @@ public class MainApplet extends PApplet{
 		}
 		if(chLabel != null){
 			chLabel.display();
+		}
+	}
+	
+	
+	private void drawTopLabel(){
+		textAlign(CENTER, CENTER);
+		if(isChangingEpisode()){
+			fill(200, 5, 50);
+			textSize(60);
+		}else{
+			fill(120, 40, 30);
+			textSize(40);
+		}
+		text(topLabel, width/2, 50);
+	}
+	
+	
+	public void mouseReleased(){
+		for(Character ch: episodes.get(curEpisode-1)){
+			if(ch.isMovingInNetwork()){
+				if(network.exists(ch)){
+					ch.goBackToNetwork();
+				}else{
+					network.add(ch);
+				}
+			}else if(ch.isMoving()){
+				if(network.exists(ch)){
+					network.remove(ch);
+				}else{
+					ch.goBack();
+				}
+			}
+			ch.setMoving(false);
+		}
+	}
+	
+	
+	public void mousePressed(){
+		for(Character ch: episodes.get(curEpisode-1)){
+			if(ch.arrowIsInCharacter()){
+				ch.setMoving(true);
+			}
 		}
 	}
 	
@@ -130,17 +172,29 @@ public class MainApplet extends PApplet{
 	
 	//implement keyReleased
 	public void keyReleased(){
-		if(nextEpisode >= 1 && nextEpisode <= 7){
+		if(isChangingEpisode()){
 			setEpisode(nextEpisode);
-			network.clearAll();
 		}
 		nextEpisode = 0;
 	}
 	
 	//set the episode and update label of applet
 	private void setEpisode(int episode){
+		if(!network.containsCharacters()){
+			changeEpisode.play();
+		}
 		curEpisode = episode;
+		network.clearAll();
 		topLabel = "Star Wars " + String.valueOf(curEpisode);
+	}
+	
+	
+	private boolean isChangingEpisode(){
+		if(nextEpisode >= 1 && nextEpisode <=7 && curEpisode != nextEpisode){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	//load all data
@@ -163,7 +217,7 @@ public class MainApplet extends PApplet{
 				JSONObject node = nodes.getJSONObject(i);
 				String name = node.getString("name");
 				String colour = node.getString("colour").substring(1);
-				Character ch = new Character(this, name, colour, (col+2)*offset, (row+2)*offset, 15);
+				Character ch = new Character(this, network, name, colour, (col+2)*offset, (row+2)*offset, 15);
 				episode.add(ch);
 				
 				if(col < maxCol-1){

@@ -18,7 +18,4 @@ public class MusicClip {
 		song.play();
 	}
 	
-	public void loop(){
-		song.loop();;
-	}
 }
