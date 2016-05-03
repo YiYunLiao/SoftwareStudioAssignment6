@@ -30,7 +30,7 @@ public class MainApplet extends PApplet{
 	private CharacterLabel chLabel;
 	private Network network;
 	
-	private MinimClass bgm;
+	private MinimPlayer bgm;
 	
 	//initial MainApplet
 	public void setup(){
@@ -50,8 +50,8 @@ public class MainApplet extends PApplet{
 		smooth();
 		loadData();
 
-		bgm = new MinimClass(this, "bgMusic.mp3");
-		bgm.play();
+		bgm = new MinimPlayer(this, "bgMusic.mp3");
+		bgm.loop();
 	}
 
 	//draw the applet

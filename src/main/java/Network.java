@@ -16,6 +16,7 @@ public class Network {
 	private PApplet parent;
 	private float centerX, centerY, radius;
 	private ArrayList<Character> characters;
+	private MusicClip addMusic, removeMusic;
 	
 	//constructor of Network
 	public Network(PApplet parent, float x, float y, float radius){
@@ -24,6 +25,9 @@ public class Network {
 		centerY = y;
 		this.radius = radius;
 		characters = new ArrayList<Character>();
+		
+		addMusic = new MusicClip(parent, "add.mp3");
+		removeMusic = new MusicClip(parent, "remove.mp3");
 	}
 	
 	//display the circle and characters on circle
@@ -85,12 +89,14 @@ public class Network {
 	
 	//add character to circle and update circle
 	public void add(Character ch){
+		addMusic.play();
 		characters.add(ch);
 		update();
 	}
 	
 	//remove character in the circle and update circle
 	public void remove(Character ch){
+		removeMusic.play();
 		characters.remove(ch);
 		ch.goBack();
 		update();
@@ -98,20 +104,35 @@ public class Network {
 	
 	//add all characters to circle
 	public void addAll(ArrayList<Character> chs){
-		for(Character ch: chs){
-			if(!characters.contains(ch)){
-				add(ch);
+		if(chs.size() != characters.size()){
+			addMusic.play();
+			for(Character ch: chs){
+				if(!characters.contains(ch)){
+					add(ch);
+				}
 			}
 		}
 	}
 	
 	//remove all characters in circle
 	public void clearAll(){
-		for(Character ch: characters){
-			ch.goBack();
+		if(containsCharacters()){
+			removeMusic.play();
+			for(Character ch: characters){
+				ch.goBack();
+			}
+			characters.clear();
+			update();
 		}
-		characters.clear();
-		update();
+	}
+	
+	
+	private boolean containsCharacters(){
+		if(characters.size() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	//detect if arrow was in circle
