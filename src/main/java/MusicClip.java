@@ -4,14 +4,12 @@ import java.applet.Applet;
 import java.applet.AudioClip;
 import java.net.URL;
 
-import processing.core.PApplet;
-
 public class MusicClip {
 	
 	private URL url;
 	private AudioClip song;
 	
-	public MusicClip(PApplet parent, String url){
+	public MusicClip(String url){
 		this.url = this.getClass().getResource(url);
 		song = Applet.newAudioClip(this.url);
 	}
