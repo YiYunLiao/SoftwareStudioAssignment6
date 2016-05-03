@@ -31,7 +31,7 @@ public class MainApplet extends PApplet{
 	private Network network;
 	
 	private MinimPlayer bgm;
-	private MusicClip changeEpisode;
+	private MusicClip changeEpisode, goBackMusic;
 	
 	//initial MainApplet
 	public void setup(){
@@ -55,6 +55,7 @@ public class MainApplet extends PApplet{
 		bgm = new MinimPlayer(this, "bgMusic.mp3");
 		bgm.loop();
 		changeEpisode = new MusicClip("changeEpisode.mp3");
+		goBackMusic = new MusicClip("goBack.mp3");
 	}
 
 	//draw the applet
@@ -99,6 +100,7 @@ public class MainApplet extends PApplet{
 		for(Character ch: episodes.get(curEpisode-1)){
 			if(ch.isMovingInNetwork()){
 				if(network.exists(ch)){
+					goBackMusic.play();
 					ch.goBackToNetwork();
 				}else{
 					network.add(ch);
@@ -107,6 +109,7 @@ public class MainApplet extends PApplet{
 				if(network.exists(ch)){
 					network.remove(ch);
 				}else{
+					goBackMusic.play();
 					ch.goBack();
 				}
 			}
