@@ -26,14 +26,14 @@ public class Network {
 		this.radius = radius;
 		characters = new ArrayList<Character>();
 		
-		addMusic = new MusicClip(parent, "add.mp3");
-		removeMusic = new MusicClip(parent, "remove.mp3");
+		addMusic = new MusicClip("add.mp3");
+		removeMusic = new MusicClip("remove.mp3");
 	}
 	
 	//display the circle and characters on circle
 	public void display(){
 		parent.noFill();
-		if(arrowIsOnCircle()){
+		if(arrowIsInNetwork()){
 			if(parent.mousePressed){
 				parent.strokeWeight(9);
 				parent.stroke(120, 40, 180);
@@ -75,6 +75,8 @@ public class Network {
 			float nextX = centerX + radius*parent.cos(parent.TWO_PI/num*i);
 			float nextY = centerY + radius*parent.sin(parent.TWO_PI/num*i);
 			characters.get(i).goTo(nextX, nextY);
+			characters.get(i).setXInNetwork(nextX);
+			characters.get(i).setYInNetwork(nextY);
 		}
 	}
 	
@@ -127,7 +129,7 @@ public class Network {
 	}
 	
 	
-	private boolean containsCharacters(){
+	public boolean containsCharacters(){
 		if(characters.size() > 0){
 			return true;
 		}else{
@@ -137,7 +139,7 @@ public class Network {
 	
 	//detect if arrow was in circle
 	@SuppressWarnings("static-access")
-	private boolean arrowIsOnCircle(){
+	public boolean arrowIsInNetwork(){
 		float diffXSquare = parent.sq(parent.mouseX - centerX);
 		float diffYSquare = parent.sq(parent.mouseY - centerY);
 		
