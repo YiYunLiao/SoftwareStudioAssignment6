@@ -12,6 +12,9 @@ Write a	program to make users	perceive the interaction between characters in the
 *	The width of each link is visualized based on the value of the link.
 *	Littile circles are animated when being clicked or clicking effective button.
 
+####Audiation
+*	Playing different music depends on what action is done.
+
 ####Add Character By Clicking
 ![alt text](/picture/add_click.gif "Add Character")
 ####Remove Character By Clicking
