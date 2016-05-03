@@ -30,6 +30,8 @@ public class MainApplet extends PApplet{
 	private CharacterLabel chLabel;
 	private Network network;
 	
+	private MinimClass bgm;
+	
 	//initial MainApplet
 	public void setup(){
 		size(width, height);
@@ -47,6 +49,9 @@ public class MainApplet extends PApplet{
 		
 		smooth();
 		loadData();
+
+		bgm = new MinimClass(this, "bgMusic.mp3");
+		bgm.play();
 	}
 
 	//draw the applet
