@@ -16,7 +16,7 @@ public class Network {
 	private PApplet parent;
 	private float centerX, centerY, radius;
 	private ArrayList<Character> characters;
-	private MusicClip addMusic, removeMusic;
+	private MusicClip addMusic, removeMusic, buttonMusic;
 	
 	//constructor of Network
 	public Network(PApplet parent, float x, float y, float radius){
@@ -28,6 +28,7 @@ public class Network {
 		
 		addMusic = new MusicClip("add.mp3");
 		removeMusic = new MusicClip("remove.mp3");
+		buttonMusic = new MusicClip("button.mp3");
 	}
 	
 	//display the circle and characters on circle
@@ -113,6 +114,8 @@ public class Network {
 					add(ch);
 				}
 			}
+		}else{
+			buttonMusic.play();
 		}
 	}
 	
@@ -125,6 +128,8 @@ public class Network {
 			}
 			characters.clear();
 			update();
+		}else{
+			buttonMusic.play();
 		}
 	}
 	
