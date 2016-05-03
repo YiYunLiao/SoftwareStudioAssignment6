@@ -12,14 +12,18 @@ import de.looksgood.ani.Ani;
 public class Character {
 	
 	private MainApplet parent;
+	private Network network;
 	private String name, colour;
 	private float defaultX, defaultY, curX, curY, radius;
 	private CharacterLabel label;
 	private Map<Character, Integer> targets;
+	private boolean moving;
+	private float xInNetwork, yInNetwork;
 
 	//constructor of character
-	public Character(MainApplet parent, String name, String colour, float x, float y, float radius){
+	public Character(MainApplet parent, Network network, String name, String colour, float x, float y, float radius){
 		this.parent = parent;
+		this.network = network;
 		this.name = name;
 		this.colour = colour;
 		defaultX = x;
@@ -35,10 +39,13 @@ public class Character {
 	@SuppressWarnings("static-access")
 	public void display(){
 		parent.noStroke();
+		if(isMoving()){
+			movingWithArrow();
+		}
 		if(arrowIsInCharacter()){
-			if(parent.mousePressed){
+			if(isMoving()){
 				parent.fill(parent.unhex(colour), 255);
-				parent.ellipse(curX, curY, radius+5, radius+5);
+				parent.ellipse(parent.mouseX, parent.mouseY, radius+5, radius+5);
 			}else{
 				parent.fill(parent.unhex(colour), 180);
 				parent.ellipse(curX, curY, radius+5, radius+5);
@@ -47,6 +54,12 @@ public class Character {
 			parent.fill(parent.unhex(colour), 125);
 			parent.ellipse(curX, curY, radius, radius);
 		}
+	}
+	
+	
+	private void movingWithArrow(){
+		curX = parent.mouseX;
+		curY = parent.mouseY;
 	}
 	
 	//detect if arrow was on character
@@ -103,4 +116,39 @@ public class Character {
 	public void goBack(){
 		goTo(defaultX, defaultY);
 	}
+	
+	
+	public void goBackToNetwork(){
+		goTo(xInNetwork, yInNetwork);
+	}
+	
+	
+	public void setMoving(boolean moving){
+		this.moving = moving;
+	}
+	
+	
+	public boolean isMoving(){
+		return moving;
+	}
+	
+	
+	public boolean isMovingInNetwork(){
+		if(isMoving() && network.arrowIsInNetwork()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	public void setXInNetwork(float x){
+		xInNetwork = x;
+	}
+	
+	
+	public void setYInNetwork(float y){
+		yInNetwork = y;
+	}
+
 }
