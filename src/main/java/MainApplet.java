@@ -52,7 +52,7 @@ public class MainApplet extends PApplet{
 		smooth();
 		loadData();
 
-		bgm = new MinimPlayer(this, "bgMusic.wav");
+		bgm = new MinimPlayer(this, "./music/bgMusic.wav");
 		bgm.loop();
 		changeEpisode = new MusicClip("./music/changeEpisode.wav");
 		goBackMusic = new MusicClip("./music/goBack.wav");
