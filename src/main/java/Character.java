@@ -39,11 +39,11 @@ public class Character {
 	@SuppressWarnings("static-access")
 	public void display(){
 		parent.noStroke();
-		if(isMoving()){
+		if(moving){
 			movingWithArrow();
 		}
 		if(arrowIsInCharacter()){
-			if(isMoving()){
+			if(parent.mousePressed){
 				parent.fill(parent.unhex(colour), 255);
 				parent.ellipse(parent.mouseX, parent.mouseY, radius+5, radius+5);
 			}else{
@@ -56,23 +56,10 @@ public class Character {
 		}
 	}
 	
-	
+	//make character move with arrow
 	private void movingWithArrow(){
 		curX = parent.mouseX;
 		curY = parent.mouseY;
-	}
-	
-	//detect if arrow was on character
-	@SuppressWarnings("static-access")
-	public boolean arrowIsInCharacter(){
-		float diffXSquare = parent.sq(parent.mouseX - curX);
-		float diffYSquare = parent.sq(parent.mouseY - curY);
-
-		if(diffXSquare + diffYSquare < parent.sq(radius)){
-			return true;
-		}else{
-			return false;
-		}
 	}
 	
 	//add a target character to source character with a value
@@ -117,38 +104,71 @@ public class Character {
 		goTo(defaultX, defaultY);
 	}
 	
-	
+	//make character go back to network
 	public void goBackToNetwork(){
 		goTo(xInNetwork, yInNetwork);
 	}
 	
-	
+	//set character movable or not
 	public void setMoving(boolean moving){
 		this.moving = moving;
 	}
 	
-	
+	//check whether character were moving
 	public boolean isMoving(){
 		return moving;
 	}
 	
+	//set destination in x-axis in network
+	public void setXInNetwork(float x){
+		xInNetwork = x;
+	}
 	
-	public boolean isMovingInNetwork(){
-		if(isMoving() && network.arrowIsInNetwork()){
+	//set destination in y-axis in network
+	public void setYInNetwork(float y){
+		yInNetwork = y;
+	}
+
+	//detect if arrow was on character before character turn larger
+	@SuppressWarnings("static-access")
+	public boolean arrowIsInCharacter(){
+		if(parent.dist(parent.mouseX, parent.mouseY, curX, curY) < radius){
 			return true;
 		}else{
 			return false;
 		}
 	}
 	
-	
-	public void setXInNetwork(float x){
-		xInNetwork = x;
+	//check whether character were being dragged out of original place 
+	@SuppressWarnings("static-access")
+	public boolean isMovingOutFromOrigin(){
+		if(moving && parent.dist(parent.mouseX, parent.mouseY, defaultX, defaultY) > radius+5 &&
+			!network.exists(this)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
+	//check whether character were being dragged out of network
+	@SuppressWarnings("static-access")
+	public boolean isMovingOutFromNetwork(){
+		if(moving && parent.dist(parent.mouseX, parent.mouseY, xInNetwork, yInNetwork) > radius+5 &&
+			network.exists(this)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
-	public void setYInNetwork(float y){
-		yInNetwork = y;
+	//check whether character were over network
+	@SuppressWarnings("static-access")
+	public boolean isOverNetwork(){
+		if(parent.dist(parent.mouseX, parent.mouseY, network.getX(), network.getY()) <= network.getRadius()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }

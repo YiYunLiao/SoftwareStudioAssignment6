@@ -52,13 +52,13 @@ public class MainApplet extends PApplet{
 		smooth();
 		loadData();
 
-		//bgm = new MinimPlayer(this, "./music/bgMusic.wav");
-		//bgm.loop();
+		bgm = new MinimPlayer(this, "bgMusic.wav");
+		bgm.loop();
 		changeEpisode = new MusicClip("./music/changeEpisode.wav");
 		goBackMusic = new MusicClip("./music/goBack.wav");
 	}
 
-	//draw the applet
+	//draw the window
 	public void draw(){
 		background(255);
 		ellipseMode(RADIUS);
@@ -82,7 +82,7 @@ public class MainApplet extends PApplet{
 		}
 	}
 	
-	
+	//draw the top label
 	private void drawTopLabel(){
 		textAlign(CENTER, CENTER);
 		if(isChangingEpisode()){
@@ -95,29 +95,36 @@ public class MainApplet extends PApplet{
 		text(topLabel, width/2, 50);
 	}
 	
-	
 	public void mouseReleased(){
 		for(Character ch: episodes.get(curEpisode-1)){
-			if(ch.isMovingInNetwork()){
-				if(network.exists(ch)){
-					goBackMusic.play();
+			if(ch.isMoving()){
+				if(ch.isOverNetwork() && network.exists(ch)){
+					//make character go back to network
 					ch.goBackToNetwork();
-				}else{
-					network.add(ch);
-				}
-			}else if(ch.isMoving()){
-				if(network.exists(ch)){
-					network.remove(ch);
-				}else{
 					goBackMusic.play();
+				}else if(ch.isOverNetwork() && !network.exists(ch)){
+					//make character be added to network by dragging
+					network.add(ch);
+				}else if(ch.isMovingOutFromNetwork()){
+					//make character be removed from network by dragging
+					network.remove(ch);
+				}else if(ch.isMovingOutFromOrigin()){
+					//make character go back to original place
 					ch.goBack();
+					goBackMusic.play();
+				}else if(!network.exists(ch)){
+					//make character be added to network by clicking
+					network.add(ch);
+				}else if(network.exists(ch)){
+					//make character be removed from network by clicking
+					network.remove(ch);
 				}
 			}
 			ch.setMoving(false);
 		}
 	}
 	
-	
+	//make chosen character to movable
 	public void mousePressed(){
 		for(Character ch: episodes.get(curEpisode-1)){
 			if(ch.arrowIsInCharacter()){
@@ -126,25 +133,16 @@ public class MainApplet extends PApplet{
 		}
 	}
 	
-	//implement mouseClicked
+	//do something when clicking button
 	public void mouseClicked(){
 		if(addAll.arrowIsInButton()){
 			network.addAll(episodes.get(curEpisode-1));
 		}else if(clear.arrowIsInButton()){
 			network.clearAll();
 		}
-		for(Character ch: episodes.get(curEpisode-1)){
-			if(ch.arrowIsInCharacter()){
-				if(!network.exists(ch)){
-					network.add(ch);
-				}else{
-					network.remove(ch);
-				}
-			}
-		}
 	}
 	
-	//implement keyPressed
+	//set next episode
 	public void keyPressed(){
 		switch(key){
 			case '1':
@@ -173,7 +171,7 @@ public class MainApplet extends PApplet{
 		}
 	}
 	
-	//implement keyReleased
+	//if the key pressed previously is effective, change episode
 	public void keyReleased(){
 		if(isChangingEpisode()){
 			setEpisode(nextEpisode);
@@ -181,7 +179,7 @@ public class MainApplet extends PApplet{
 		nextEpisode = 0;
 	}
 	
-	//set the episode and update label of applet
+	//set the episode and update label of window
 	private void setEpisode(int episode){
 		if(!network.containsCharacters()){
 			changeEpisode.play();
@@ -191,7 +189,7 @@ public class MainApplet extends PApplet{
 		topLabel = "Star Wars " + String.valueOf(curEpisode);
 	}
 	
-	
+	//check whether update episode
 	private boolean isChangingEpisode(){
 		if(nextEpisode >= 1 && nextEpisode <=7 && curEpisode != nextEpisode){
 			return true;

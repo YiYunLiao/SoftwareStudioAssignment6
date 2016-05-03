@@ -133,7 +133,7 @@ public class Network {
 		}
 	}
 	
-	
+	//check whether network contained characters
 	public boolean containsCharacters(){
 		if(characters.size() > 0){
 			return true;
@@ -142,13 +142,25 @@ public class Network {
 		}
 	}
 	
+	//get center of network in x-axis
+	public float getX(){
+		return centerX;
+	}
+	
+	//get center of network in y-axis
+	public float getY(){
+		return centerY;
+	}
+	
+	//get radius of network
+	public float getRadius(){
+		return radius;
+	}
+	
 	//detect if arrow was in circle
 	@SuppressWarnings("static-access")
 	public boolean arrowIsInNetwork(){
-		float diffXSquare = parent.sq(parent.mouseX - centerX);
-		float diffYSquare = parent.sq(parent.mouseY - centerY);
-		
-		if(diffXSquare + diffYSquare <= parent.sq(radius)){
+		if(parent.dist(parent.mouseX, parent.mouseY, centerX, centerY) <= radius){
 			return true;
 		}else{
 			return false;

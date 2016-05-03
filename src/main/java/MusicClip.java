@@ -10,6 +10,7 @@ public class MusicClip {
 	private URL url;
 	private AudioClip song;
 	
+	//constructor of MusicClip
 	public MusicClip(String url){
 		try {
 			this.url = new URL("file:" + url);
@@ -19,6 +20,7 @@ public class MusicClip {
 		}
 	}
 	
+	//play the music
 	public void play(){
 		song.play();
 	}

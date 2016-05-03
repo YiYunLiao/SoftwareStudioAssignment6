@@ -37,7 +37,7 @@ public class Button {
 	
 	
 	// detect whether arrow was in button
-	public boolean arrowIsInButton(){		
+	public boolean arrowIsInButton(){
 		if(parent.mouseX > x && parent.mouseX < x + width &&
 			parent.mouseY > y && parent.mouseY < y + height){
 			return true;

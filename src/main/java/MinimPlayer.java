@@ -6,20 +6,16 @@ import processing.core.PApplet;
 
 public class MinimPlayer {
 
-	//private PApplet parent;
 	private Minim minim;
 	private AudioPlayer song;
 	
+	//constructor of MinimPlayer
 	public MinimPlayer(PApplet parent, String url){
-		//this.parent = parent;
 		minim = new Minim(parent);
 		song = minim.loadFile(this.getClass().getResource(url).getPath());
 	}
-	
-	public void play(){
-		song.play();
-	}
-	
+
+	//play loop of music
 	public void loop(){
 		song.loop();;
 	}
