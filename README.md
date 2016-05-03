@@ -24,6 +24,8 @@ Write a	program to make users	perceive the interaction between characters in the
 ![alt text](/picture/addAll.gif "Add All Characters")
 ####Clear All Characters
 ![alt text](/picture/clear.gif "Clear All Characters")
+####Change Episode
+![alt text](/picture/changeEpisode.gif "Change Episode")
 
 ## **Team Members And Distributions** ##
 ####Member 1 : Allan: **103062203**
