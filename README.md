@@ -16,9 +16,9 @@ Write a	program to make users	perceive the interaction between characters in the
 ![alt text](/picture/add_click.gif "Add Character")
 ####Remove Character By Clicking
 ![alt text](/picture/remove_click.gif "Remove Character")
-####Add Character By Draging
+####Add Character By Dragging
 ![alt text](/picture/add_drag.gif "Add Character")
-####Remove Character By Draging
+####Remove Character By Dragging
 ![alt text](/picture/remove_drag.gif "Remove Character")
 ####Add All Characters
 ![alt text](/picture/addAll.gif "Add All Characters")
