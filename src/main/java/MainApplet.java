@@ -30,8 +30,7 @@ public class MainApplet extends PApplet{
 	private CharacterLabel chLabel;
 	private Network network;
 	
-	private MinimPlayer bgm;
-	private MusicClip changeEpisode, goBackMusic;
+	private MusicClip bgm, changeEpisode, goBackMusic;
 	
 	//initial MainApplet
 	public void setup(){
@@ -52,7 +51,7 @@ public class MainApplet extends PApplet{
 		smooth();
 		loadData();
 
-		bgm = new MinimPlayer(this, "./music/bgMusic.wav");
+		bgm = new MusicClip("./music/bgMusic.wav");
 		bgm.loop();
 		changeEpisode = new MusicClip("./music/changeEpisode.wav");
 		goBackMusic = new MusicClip("./music/goBack.wav");

@@ -44,7 +44,6 @@ Write a	program to make users	perceive the interaction between characters in the
 *	All methods to detect if arrow was on the object.
 *	Every constructor except Button and CharacterLabel.java
 *	MainApplet.java: Everything except mouseClicked(): void
-*	MinimPlayer.java
 *	MusicClip.java
 
 ######Reference

@@ -25,4 +25,9 @@ public class MusicClip {
 		song.play();
 	}
 	
+	//loop the music
+	public void loop(){
+		song.loop();
+	}
+	
 }
