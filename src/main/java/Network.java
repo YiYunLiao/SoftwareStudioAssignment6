@@ -26,9 +26,9 @@ public class Network {
 		this.radius = radius;
 		characters = new ArrayList<Character>();
 		
-		addMusic = new MusicClip("add.mp3");
-		removeMusic = new MusicClip("remove.mp3");
-		buttonMusic = new MusicClip("button.mp3");
+		addMusic = new MusicClip("./music/add.wav");
+		removeMusic = new MusicClip("./music/remove.wav");
+		buttonMusic = new MusicClip("./music/button.wav");
 	}
 	
 	//display the circle and characters on circle
